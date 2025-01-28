@@ -2,16 +2,34 @@ import React from "react";
 import Header from "./Header";
 import Home from "../pages/Home";
 import { anime, manhwa } from "../data";
+import { useNavigate } from "react-router-dom";
 const Body = () => {
+  const navigate = useNavigate();
+  const moviesr = () => {
+    navigate("/list/movies");
+  };
+  const seriesr = () => {
+    navigate("/list/series");
+  };
+  const animer = () => {
+    navigate("/list/anime");
+  };
+  const manhwar = () => {
+    navigate("/list/manhwa");
+  };
   return (
-    <div className="min-h-screen bg-gray-900 scrollbar-hide"
-    style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+    <div
+      className="min-h-screen bg-gray-900 scrollbar-hide"
+      style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
     >
       <main className="max-w-7xl mx-auto px-4 py-8">
         <section className="mb-12">
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-xl font-bold text-gray-300">MOVIE</h2>
-            <button className="text-gray-300 hover:text-white transition-colors">
+            <button
+              className="text-gray-300 hover:text-white transition-colors"
+              onClick={moviesr}
+            >
               MORE
             </button>
           </div>
@@ -20,7 +38,7 @@ const Body = () => {
               className="flex overflow-x-auto space-x-4 pb-4 scrollbar-hide"
               style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
             >
-              {anime.slice(0,10).map((item, idx) => (
+              {anime.slice(0, 10).map((item, idx) => (
                 <div key={idx} className="flex-none w-[200px]">
                   {console.log(item)}
                   <div className="relative overflow-hidden rounded-lg">
@@ -43,7 +61,10 @@ const Body = () => {
         <section className="mb-12">
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-xl font-bold text-gray-300">SERIES</h2>
-            <button className="text-gray-300 hover:text-white transition-colors">
+            <button
+              className="text-gray-300 hover:text-white transition-colors"
+              onClick={seriesr}
+            >
               MORE
             </button>
           </div>
@@ -52,7 +73,7 @@ const Body = () => {
               className="flex overflow-x-auto space-x-4 pb-4 scrollbar-hide"
               style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
             >
-              {manhwa.slice(0,10).map((item, idx) => (
+              {manhwa.slice(0, 10).map((item, idx) => (
                 <div key={idx} className="flex-none w-[200px]">
                   {console.log(item)}
                   <div className="relative overflow-hidden rounded-lg">
@@ -75,7 +96,10 @@ const Body = () => {
         <section className="mb-12">
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-xl font-bold text-gray-300">ANIME</h2>
-            <button className="text-gray-300 hover:text-white transition-colors">
+            <button
+              className="text-gray-300 hover:text-white transition-colors"
+              onClick={animer}
+            >
               MORE
             </button>
           </div>
@@ -84,7 +108,7 @@ const Body = () => {
               className="flex overflow-x-auto space-x-4 pb-4 scrollbar-hide"
               style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
             >
-              {anime.slice(0,10).map((item, idx) => (
+              {anime.slice(0, 10).map((item, idx) => (
                 <div key={idx} className="flex-none w-[200px]">
                   {console.log(item)}
                   <div className="relative overflow-hidden rounded-lg">
@@ -107,7 +131,10 @@ const Body = () => {
         <section className="mb-12">
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-xl font-bold text-gray-300">MANHWA</h2>
-            <button className="text-gray-300 hover:text-white transition-colors">
+            <button
+              className="text-gray-300 hover:text-white transition-colors"
+              onClick={manhwar}
+            >
               MORE
             </button>
           </div>
@@ -116,7 +143,7 @@ const Body = () => {
               className="flex overflow-x-auto space-x-4 pb-4 scrollbar-hide"
               style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
             >
-              {manhwa.slice(0,10).map((item, idx) => (
+              {manhwa.slice(0, 10).map((item, idx) => (
                 <div key={idx} className="flex-none w-[200px]">
                   {console.log(item)}
                   <div className="relative overflow-hidden rounded-lg">

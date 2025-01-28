@@ -3,6 +3,7 @@ import { coverPhotos } from "../data";
 import Header from "../components/Header";
 import Body from "../components/Body";
 import Footer from "../components/Footer";
+import { Outlet } from "react-router-dom";
 
 const Home = () => {
   const [currentCvrIdx, setcurrentCvrIdx] = useState(0);
@@ -20,7 +21,9 @@ const Home = () => {
     >
       <Header coverProps={coverPhotos[currentCvrIdx]} />
       {console.log(coverPhotos[0])}
-      <Body />
+      <div>
+        <Outlet />
+      </div>
       <Footer />
     </div>
   );

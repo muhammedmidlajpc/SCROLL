@@ -10,21 +10,17 @@ const Footer = () => {
     navigate("/");
     console.log("first");
   };
-  const movies = () => {
-    navigate("/movies");
-    console.log("first");
+  const moviesr = () => {
+    navigate("/list/movies");
   };
-  const manhwa = () => {
-    navigate("/manhwa");
-    console.log("first");
+  const seriesr = () => {
+    navigate("/list/series");
   };
-  const anime = () => {
-    navigate("/anime");
-    console.log("first");
+  const animer = () => {
+    navigate("/list/anime");
   };
-  const series = () => {
-    navigate("/series");
-    console.log("first");
+  const manhwar = () => {
+    navigate("/list/manhwa");
   };
   const instaClick = () => {
     window.location.href = "https://www.instagram.com";
@@ -50,16 +46,16 @@ const Footer = () => {
             onClick={logoClick}
           />
           <nav className="flex gap-10">
-            <h2 className="text-xl font-bold text-gray-300" onClick={movies}>
+            <h2 className="text-xl font-bold text-gray-300" onClick={moviesr}>
               MOVIE
             </h2>
-            <h2 className="text-xl font-bold text-gray-300" onClick={series}>
+            <h2 className="text-xl font-bold text-gray-300" onClick={seriesr}>
               SERIES
             </h2>
-            <h2 className="text-xl font-bold text-gray-300" onClick={anime}>
+            <h2 className="text-xl font-bold text-gray-300" onClick={animer}>
               ANIME
             </h2>
-            <h2 className="text-xl font-bold text-gray-300" onClick={manhwa}>
+            <h2 className="text-xl font-bold text-gray-300" onClick={manhwar}>
               MANHWA
             </h2>
           </nav>
