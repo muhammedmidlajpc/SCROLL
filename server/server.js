@@ -11,8 +11,16 @@ const rating = require("./routes/rating.routes");
 const tweet = require("./routes/tweet.routes");
 const chat = require("./routes/chat.routes");
 const review = require("./routes/review.routes");
+const { app, server } = require("./config/socket");
 require("dotenv").config();
-const app = express();
+// const io = require("socket.io")(process.env.PORT, {
+//   cors: {
+//     origin: "http://localhost:5173",
+//     credentials: true
+//   }
+// });
+
+// const app = express();
 
 app.use("/images", express.static("./images"));
 app.use(cors({ origin: "http://localhost:5173", credentials: true }));
@@ -28,6 +36,9 @@ app.use(chat);
 app.use(review);
 dbconnect();
 
-app.listen(process.env.PORT, (err) => {
+// app.listen(process.env.PORT, (err) => {
+//   console.log("Server is running!");
+// });
+server.listen(process.env.PORT, (err) => {
   console.log("Server is running!");
 });

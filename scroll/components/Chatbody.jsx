@@ -3,6 +3,7 @@ import { Send } from "lucide-react";
 import { useLocation, useParams } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
+import socket from "../utils/socket";
 
 const Chatbody = () => {
   const location = useLocation();
@@ -16,43 +17,68 @@ const Chatbody = () => {
 
   useEffect(() => {
     setsender_id(userId);
-    console.log(userId);
-  }, []);
-  useEffect(() => {
-    const getmessages = async () => {
-      console.log(sender_id);
-      await axios
-        .get(`http://localhost:5000/chat`, {
-          params: {
-            sender_id: userId,
-            reciver_id: reciverId
-          }
-        })
-        .then((res) => {
-          console.log(res.data);
-          setchats(res.data.data);
-        });
+    // // console.log(userId);
+    socket.connect();
+    socket.on("receiveMessage", (newMessage) => {
+      setchats((prevChats) => {
+        if (
+          !prevChats.some(
+            (msg) =>
+              msg.message === newMessage.message &&
+              msg.sender_id === newMessage.sender_id
+          )
+        ) {
+          return [...prevChats, newMessage];
+        }
+      });
+    });
+    return () => {
+      socket.disconnect();
     };
-    getmessages();
-  }, [message]);
-  const handleSendMessage = (e) => {
+  }, []);
+  useEffect(
+    () => {
+      if (!userId) return; // Prevent running when userId is not set
+      const getmessages = async () => {
+        console.log(sender_id);
+        await axios
+          .get(`http://localhost:5000/chat`, {
+            params: {
+              sender_id: userId,
+              reciver_id: reciverId
+            }
+          })
+          .then((res) => {
+            console.log(res.data);
+            setchats(res.data.data);
+          });
+      };
+      getmessages();
+    },
+    [] // [message] when using socket.io there is no need to rerender the useeffect every time the message is changed
+  );
+  const handleSendMessage = async (e) => {
     e.preventDefault();
-    if (message) {
-      //   console.log(userId);
-      try {
-        const msgdata = {
-          sender_id: sender_id,
-          reciver_id: reciverId,
-          message: message
-        };
-        axios.post("http://localhost:5000/chat", msgdata).then((res) => {
-          console.log(res.data);
-          toast.info(res.data.message);
-          setMessage("")
-        });
-      } catch (err) {
-        console.log(err.message);
-      }
+    if (message.trim() === "") {
+      //this is better than  // if (message) {
+      return;
+    }
+
+    const msgdata = {
+      sender_id: sender_id,
+      reciver_id: reciverId,
+      message: message
+    };
+    // Emit the message via Socket.io
+    socket.emit("sendMessage", msgdata);
+    try {
+      await axios.post("http://localhost:5000/chat", msgdata).then((res) => {
+        console.log(res.data);
+        toast.info(res.data.message);
+        setMessage("");
+      });
+    } catch (err) {
+      console.log(err.message);
     }
   };
   return (
