@@ -211,4 +211,70 @@ const coverPhotos = [
   { title: "ONE PIECE", image: onepieceC },
   { title: "THE VAMPIRE DIARIES", image: tvdC }
 ];
-export { anime, manhwa, coverPhotos};
+const saved = [
+  {
+    id: 1,
+    name: "Second Life Ranker",
+    image: scndllifernkr,
+    description:
+      "Scndl Life Rnkr is a 2021 anime series created by Kazuki Miyamoto. The series follows the lives of the main characters, Ryuichi Sakamoto, Hiroshi Sakamoto, and Yoshimi Sakamoto, as they navigate various battles and challenges to become the strongest heroes in the world."
+  },
+  {
+    id: 2,
+    name: "Damn Reincarnation",
+    image: DamnReincarnation,
+    description: ""
+  },
+  {
+    id: 3,
+    name: "The Disascher God",
+    image: disascher,
+    description: ""
+  },
+  {
+    id: 4,
+    name: "infinit mage",
+    image: infntmage,
+    description: ""
+  },
+  {
+    id: 5,
+    name: "LifeofaMagicAcademyMage",
+    image: LifeofaMagicAcademyMage,
+    description: ""
+  },
+]
+const history = [
+  {
+    id: 1,
+    name: "Second Life Ranker",
+    image: scndllifernkr,
+    description:
+      "Scndl Life Rnkr is a 2021 anime series created by Kazuki Miyamoto. The series follows the lives of the main characters, Ryuichi Sakamoto, Hiroshi Sakamoto, and Yoshimi Sakamoto, as they navigate various battles and challenges to become the strongest heroes in the world."
+  },
+  {
+    id: 2,
+    name: "Damn Reincarnation",
+    image: DamnReincarnation,
+    description: ""
+  },
+  {
+    id: 3,
+    name: "The Disascher God",
+    image: disascher,
+    description: ""
+  },
+  {
+    id: 4,
+    name: "infinit mage",
+    image: infntmage,
+    description: ""
+  },
+  {
+    id: 5,
+    name: "LifeofaMagicAcademyMage",
+    image: LifeofaMagicAcademyMage,
+    description: ""
+  },
+]
+export { anime, manhwa, coverPhotos,saved,history};

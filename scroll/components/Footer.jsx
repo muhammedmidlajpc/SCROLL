@@ -4,81 +4,52 @@ import insta from "../src/assets/images/insta.png";
 import fb from "../src/assets/images/fb.png";
 import gmail from "../src/assets/images/gmail.png";
 import { useNavigate } from "react-router-dom";
+
 const Footer = () => {
   const navigate = useNavigate();
-  const logoClick = () => {
-    navigate("/");
-    console.log("first");
-  };
-  const moviesr = () => {
-    navigate("/list/movies");
-  };
-  const seriesr = () => {
-    navigate("/list/series");
-  };
-  const animer = () => {
-    navigate("/list/anime");
-  };
-  const manhwar = () => {
-    navigate("/list/manhwa");
-  };
-  const instaClick = () => {
-    window.location.href = "https://www.instagram.com";
-    console.log("insta");
-  };
-  const fbClick = () => {
-    window.location.href = "https://www.facebook.com";
-    console.log("first");
-  };
-  const gmailClick = () => {
-    window.location.href = "https://www.gmail.com";
-    console.log("first");
-  };
+
   return (
-    <div className="relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-gray-900  via-black/50 to-black/70" />
-      <div className="w-full bg-gray-900 h-[300px]">
-        <div className="flex relative top-[150px] items-center justify-between max-w-7xl mx-auto">
+    <div className="relative bg-gray-900 py-8 text-gray-300">
+      <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-black/50 to-black/70" />
+      
+      <div className="relative max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between px-6 space-y-6 md:space-y-0">
+        
+        {/* Logo */}
+        <img
+          src={logo}
+          alt="SCROLL"
+          className="h-16 cursor-pointer"
+          onClick={() => navigate("/")}
+        />
+
+        {/* Navigation Links */}
+        <nav className="flex flex-wrap justify-center gap-6 text-lg font-semibold">
+          <h2 className="cursor-pointer hover:text-amber-400" onClick={() => navigate("/list/movies")}>MOVIE</h2>
+          <h2 className="cursor-pointer hover:text-amber-400" onClick={() => navigate("/list/series")}>SERIES</h2>
+          <h2 className="cursor-pointer hover:text-amber-400" onClick={() => navigate("/list/anime")}>ANIME</h2>
+          <h2 className="cursor-pointer hover:text-amber-400" onClick={() => navigate("/list/manhwa")}>MANHWA</h2>
+        </nav>
+
+        {/* Social Icons */}
+        <div className="flex gap-6">
           <img
-            src={logo}
-            alt="SCROLL"
-            className="h-[100px]"
-            onClick={logoClick}
+            src={insta}
+            alt="Instagram"
+            className="h-8 w-8 cursor-pointer hover:scale-110 transition-transform"
+            onClick={() => window.location.href = "https://www.instagram.com"}
           />
-          <nav className="flex gap-10">
-            <h2 className="text-xl font-bold text-gray-300" onClick={moviesr}>
-              MOVIE
-            </h2>
-            <h2 className="text-xl font-bold text-gray-300" onClick={seriesr}>
-              SERIES
-            </h2>
-            <h2 className="text-xl font-bold text-gray-300" onClick={animer}>
-              ANIME
-            </h2>
-            <h2 className="text-xl font-bold text-gray-300" onClick={manhwar}>
-              MANHWA
-            </h2>
-          </nav>
-          <div className="flex gap-10">
-            <img
-              src={insta}
-              alt="instagram"
-              className="h-[30px] w-[30px]"
-              onClick={instaClick}
-            />
-            <img
-              src={fb}
-              alt="FaceBook"
-              className="h-[30px] w-[30px]"
-              onClick={fbClick}
-            />
-            <img
-              src={gmail}
-              alt="Mail"
-              className="h-[30px] w-[30px]"
-              onClick={gmailClick}
-            />
-          </div>
+          <img
+            src={fb}
+            alt="Facebook"
+            className="h-8 w-8 cursor-pointer hover:scale-110 transition-transform"
+            onClick={() => window.location.href = "https://www.facebook.com"}
+          />
+          <img
+            src={gmail}
+            alt="Gmail"
+            className="h-8 w-8 cursor-pointer hover:scale-110 transition-transform"
+            onClick={() => window.location.href = "https://www.gmail.com"}
+          />
         </div>
       </div>
     </div>
