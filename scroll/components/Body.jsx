@@ -3,8 +3,6 @@ import Header from "./Header";
 import Home from "../pages/Home";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-
-// const API_KEY = "4dcad29fc45f7ee7899417610fde1e89";
 const Body = () => {
   const navigate = useNavigate();
   const moviesr = () => {
@@ -53,12 +51,7 @@ const Body = () => {
   };
 
   const role = sessionStorage.getItem("role");
-  const [adminflag, setadminflag] = useState(false);
-  useEffect(() => {
-    if (role === "admin") {
-      setadminflag(true);
-    }
-  }, []);
+  console.log(role)
   const handlecover = () => {
     navigate("/cover");
   };
@@ -146,7 +139,7 @@ const Body = () => {
       style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
     >
       <main className="max-w-7xl mx-auto px-4 py-8">
-        {adminflag && (
+        {role === "admin" && (
           <div>
             <h1
               className="text-4xl mb-[100px] font-bold text-gray-300"

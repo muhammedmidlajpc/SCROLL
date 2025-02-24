@@ -97,9 +97,7 @@ const Chatbody = () => {
         {chats.map((msg, idx) => (
           <div
             key={idx}
-            className={`flex ${
-              msg.sender_id == userId ? "justify-end" : "justify-start"
-            }`}
+            className={`flex ${ msg.sender_id == userId ? "justify-end" : "justify-start"}`}
           >
             <div
               className={`max-w-xs px-4 py-2 rounded-lg ${

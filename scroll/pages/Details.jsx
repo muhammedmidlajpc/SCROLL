@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addreview } from "../redux/reviewslice";
 import { toast } from "react-toastify";
 import axios from "axios";
+import trash from "../src/assets/images/trash.svg";
 
 const Details = () => {
   const user = sessionStorage.getItem("userid");
@@ -21,7 +22,8 @@ const Details = () => {
   const { name } = useParams();
   const [replyflag, setreplyflag] = useState({});
   const [replytxt, setreplytxt] = useState("");
-  console.log(user);
+  const role = sessionStorage.getItem("role");
+  const [dltflag, setdltflag] = useState();
   useEffect(() => {
     const getreview = async () => {
       axios
@@ -35,7 +37,7 @@ const Details = () => {
         });
     };
     getreview();
-  }, [review, user, replytxt]);
+  }, [review, user, replytxt, dltflag]);
   const handlesaved = () => {
     let saved = [];
     console.log(saved);
@@ -69,47 +71,57 @@ const Details = () => {
           console.log(err.message);
           toast.error(err.message);
         });
+    } else {
+      toast.error("Login to add to history!");
     }
   };
   const reviewhandler = async (e) => {
     e.preventDefault();
     if (review) {
-      let reviewdata = {
-        user_id: user,
-        data_name: name,
-        content: review
-      };
-      await axios
-        .post("http://localhost:5000/review", reviewdata)
-        .then((res) => {
-          console.log(res);
-          toast.info(res.data.message);
-          setreview("");
-        })
-        .catch((err) => {
-          console.log(err);
-          toast.error(err.message);
-        });
+      if (user) {
+        let reviewdata = {
+          user_id: user,
+          data_name: name,
+          content: review
+        };
+        await axios
+          .post("http://localhost:5000/review", reviewdata)
+          .then((res) => {
+            console.log(res);
+            toast.info(res.data.message);
+            setreview("");
+          })
+          .catch((err) => {
+            console.log(err);
+            toast.error(err.message);
+          });
+      } else {
+        toast.error("Please Login to Post Your Review");
+      }
     }
   };
   const handleChangeRating = (e) => {
     setrating(e.target.value);
     console.log(rating);
-    let rate = {
-      user_Id: user,
-      data_name: name,
-      rating: rating
-    };
-    axios
-      .post("http://localhost:5000/rating", rate)
-      .then((res) => {
-        // console.log(res);
-        toast.info(res.data.message);
-      })
-      .catch((err) => {
-        console.log(err.message);
-        toast.error(err.message);
-      });
+    if (user) {
+      let rate = {
+        user_Id: user,
+        data_name: name,
+        rating: rating
+      };
+      axios
+        .post("http://localhost:5000/rating", rate)
+        .then((res) => {
+          // console.log(res);
+          toast.info(res.data.message);
+        })
+        .catch((err) => {
+          console.log(err.message);
+          toast.error(err.message);
+        });
+    } else {
+      toast.error("Login to rate!");
+    }
   };
   const handlereplyflag = (id) => {
     setreplyflag((prev) => ({
@@ -135,19 +147,44 @@ const Details = () => {
     e.preventDefault();
     console.log(id);
     if (replytxt) {
-      let replydata = {
-        user_id: user,
-        data_name: name,
-        content: replytxt,
-        review_id: id
-      };
-      await axios
-        .post("http://localhost:5000/review/reply", replydata)
-        .then((res) => {
-          console.log(res.data);
+      if (user) {
+        let replydata = {
+          user_id: user,
+          data_name: name,
+          content: replytxt,
+          review_id: id
+        };
+        await axios
+          .post("http://localhost:5000/review/reply", replydata)
+          .then((res) => {
+            console.log(res.data);
+            toast.info(res.data.message);
+            setreplytxt("");
+          })
+          .catch((err) => {
+            console.log(err);
+            toast.error(err.message);
+          });
+      } else {
+        toast.error("Please Login to Post Your Review");
+      }
+    }
+  };
+  const deletereview = async (id) => {
+    if (role === "admin") {
+      setdltflag(true);
+      try {
+        await axios.delete(`http://localhost:5000/review/${id}`).then((res) => {
+          console.log(res);
+          setdltflag(false);
+          console.log(dltflag);
           toast.info(res.data.message);
-          setreplytxt("");
         });
+      } catch (error) {
+        console.error("Error uploading image:", error.message);
+      }
+    } else {
+      toast.error("only admin can delete reviews");
     }
   };
   return (
@@ -234,13 +271,24 @@ const Details = () => {
                       <div className="w-full bg-white rounded-lg">
                         <p className="p-2">{item.content}</p>
                       </div>
-                      <button
-                        onClick={() => handlereplyflag(item._id)}
-                        className="flex items-center space-x-1 text-blue-600 hover:text-blue-800"
-                      >
-                        <img src={reply} alt="reply" className="w-5 h-5" />
-                        <span>Reply</span>
-                      </button>
+                      <div className="flex gap-1">
+                        {" "}
+                        <button
+                          onClick={() => handlereplyflag(item._id)}
+                          className="flex items-center space-x-1 text-blue-600 hover:text-blue-800"
+                        >
+                          <img src={reply} alt="reply" className="w-5 h-5" />
+                          <span>Reply</span>
+                        </button>
+                        {role === "admin" && (
+                          <button
+                            onClick={() => deletereview(item._id)}
+                            className="flex items-center space-x-1 text-blue-600 hover:text-blue-800"
+                          >
+                            <img src={trash} alt="delete" className="w-5 h-5" />
+                          </button>
+                        )}
+                      </div>
                       {replyflag[item._id] && (
                         <div className="flex flex-col gap-2">
                           {item.reply.length > 0 ? (

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../src/assets/images/scroll.png";
-import axios from "axios"
+import axios from "axios";
 import { toast } from "react-toastify";
 const SignUp = () => {
   const [formvalue, setformvalue] = useState({
@@ -24,7 +24,6 @@ const SignUp = () => {
     if (Object.keys(errors).length === 0) {
       // console.log(formvalue);
       seterror({});
-      
     } else {
       seterror(errors);
       console.log(error);
@@ -33,10 +32,12 @@ const SignUp = () => {
     axios
       .post("http://localhost:5000/signup", formvalue, {
         withCredentials: true
-      }).then((res)=>{
+      })
+      .then((res) => {
         console.log(res);
         toast.success("Sign up success");
-        sessionStorage.setItem("userid",res.data._id)
+        sessionStorage.setItem("userid", res.data._id);
+        sessionStorage.setItem("role", res.data.role);
         navigate("/");
       })
       .catch((err) => {

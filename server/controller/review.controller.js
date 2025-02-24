@@ -39,3 +39,15 @@ module.exports.postreply = async (req, res) => {
     res.status(err.status).json({ message: err.message });
   }
 };
+module.exports.dltreview = async (req, res) => {
+  try {
+    const { id } = req.params;
+    await reviewmodel.findOneAndDelete({ _id: id });
+    res
+      .status(200)
+      .json({ message: "review deleted successfully", status: true });
+  } catch (err) {
+    console.log(err.message);
+    res.status(err.status).json({ message: err.message });
+  }
+};

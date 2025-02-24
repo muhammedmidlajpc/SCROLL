@@ -16,6 +16,8 @@ import Chat from "../pages/Chat";
 import Chatbody from "../components/Chatbody";
 
 const App = () => {
+  const user = sessionStorage.getItem("userid");
+  const role = sessionStorage.getItem("role");
   return (
     <div className="scrollbar-hide">
       <ToastContainer />
@@ -27,9 +29,11 @@ const App = () => {
           <Route path="/saved" element={<Saved />} />
           <Route path="/watchlist" element={<History />} />
           <Route path="/public" element={<Public />} />
+
           <Route path="/chat" element={<Chat />}>
             <Route path="/chat/:id" element={<Chatbody />} />
           </Route>
+
           <Route path="/cover" element={<Cover />} />
         </Route>
         <Route path="/signin" element={<SignIn />} />
