@@ -89,7 +89,39 @@ const Header = ({ coverProps }) => {
       })
       .catch((error) => console.error("Error fetching data:", error));
   }, [search]);
-  const handlesearch = () => {};
+  const handledetails = (name, data) => {
+    console.log(data);
+    let detail = {};
+    // if (item === "Movies" || item === "Series") {
+      console.log(name);
+      detail = {
+        name: data.Title,
+        img: data.Poster,
+        year: data.Year,
+        imdb: data.imdbID
+      // };
+    // } else if (item === "Anime") {
+    //   detail = {
+    //     name: data.title,
+    //     img: data.images.jpg.image_url || data.images.webp.image_url,
+    //     year: data.year,
+    //     imdb: data.score,
+    //     // genre: data.genres,
+    //     synopsis: data.synopsis
+    //   };
+    // } else if (item === "Manhwa") {
+    //   detail = {
+    //     name: data.attributes.titles.en_jp || data.attributes.titles.en_us,
+    //     img: data.attributes.posterImage.original,
+    //     year: data.attributes.startDate,
+    //     imdb: data.attributes.averageRating,
+    //     synopsis: data.attributes.description
+    //   };
+    }
+    console.log(name, detail, detail);
+    navigate(`/details/${name}`, { state: { detail } });
+    setsearch("")
+  };
   return (
     <header className="relative h-[500px] md:h-[600px] scrollbar-hide">
       {/* Movie Background */}
@@ -120,7 +152,7 @@ const Header = ({ coverProps }) => {
             // className="sr-div "
             className="relative flex-1 mx-6 hidden md:block "
           >
-            <form onClick={handlesearch}>
+            <form>
               <input
                 placeholder="SEARCH"
                 value={search}
@@ -132,7 +164,7 @@ const Header = ({ coverProps }) => {
                 className="absolute left-3 top-[20px] -translate-y-1/2 w-6 h-6"
                 src={searchimg}
                 alt="search"
-                onClick={handlesearch}
+                // onClick={}
               />
             </form>
             {search &&
@@ -149,7 +181,7 @@ const Header = ({ coverProps }) => {
                           {console.log(item)}
                           <div
                             className="relative overflow-hidden rounded-lg"
-                            // onClick={() => handlesearch(item.Title, item)}
+                            onClick={() => handledetails(item.Title, item)}
                           >
                             <img
                               src={item.Poster}
