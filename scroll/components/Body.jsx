@@ -3,6 +3,7 @@ import Header from "./Header";
 import Home from "../pages/Home";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+
 const Body = () => {
   const navigate = useNavigate();
   const moviesr = () => {
@@ -49,15 +50,12 @@ const Body = () => {
     console.log(name, detail, detail);
     navigate(`/details/${name}`, { state: { detail } });
   };
-
   const role = sessionStorage.getItem("role");
-  console.log(role)
+  // console.log(role)
   const handlecover = () => {
     navigate("/cover");
   };
-
   const [movies, setmovies] = useState([]);
-
   useEffect(() => {
     const fetchmovies = async () => {
       await axios
@@ -139,7 +137,7 @@ const Body = () => {
       style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
     >
       <main className="max-w-7xl mx-auto px-4 py-8">
-        {role === "admin" && (
+        {/* {role === "admin" && (
           <div>
             <h1
               className="text-4xl mb-[100px] font-bold text-gray-300"
@@ -147,8 +145,8 @@ const Body = () => {
             >
               Edit cover
             </h1>
-          </div>
-        )}
+          </div> */}
+        {/* )} */}
         <section className="mb-12">
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-xl font-bold text-gray-300">MOVIE</h2>
