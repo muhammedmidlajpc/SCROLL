@@ -14,33 +14,13 @@ const Chatbody = () => {
   const reciverId = id;
   const [message, setMessage] = useState("");
   const [chats, setchats] = useState([]);
-
-  useEffect(() => {
-    setsender_id(userId);
-    // // console.log(userId);
-    socket.connect();
-    socket.on("receiveMessage", (newMessage) => {
-      setchats((prevChats) => {
-        if (
-          !prevChats.some(
-            (msg) =>
-              msg.message === newMessage.message &&
-              msg.sender_id === newMessage.sender_id
-          )
-        ) {
-          return [...prevChats, newMessage];
-        }
-      });
-    });
-    return () => {
-      socket.disconnect();
-    };
-  }, []);
+  console.log(userId);
+  console.log(reciverId);
   useEffect(
     () => {
       if (!userId) return; // Prevent running when userId is not set
+      console.log("first");
       const getmessages = async () => {
-        console.log(sender_id);
         await axios
           .get(`http://localhost:5000/chat`, {
             params: {
@@ -52,11 +32,34 @@ const Chatbody = () => {
             console.log(res.data);
             setchats(res.data.data);
           });
+        console.log(sender_id);
       };
       getmessages();
     },
     [] // [message] when using socket.io there is no need to rerender the useeffect every time the message is changed
   );
+  useEffect(() => {
+    setsender_id(userId);
+    // // console.log(userId);
+    socket.connect();
+    socket.on("receiveMessage", (newMessage) => {
+      setchats((prevChats=[]) => {
+        if (
+          !prevChats.some(
+            (msg) =>
+              msg.message === newMessage.message &&
+              msg.sender_id === newMessage.sender_id
+          )
+        ) {
+          return [...prevChats, newMessage];
+        }
+      });
+    });
+
+    return () => {
+      socket.disconnect();
+    };
+  }, []);
   const handleSendMessage = async (e) => {
     e.preventDefault();
     if (message.trim() === "") {
@@ -94,10 +97,12 @@ const Chatbody = () => {
 
       {/* Chat Messages */}
       <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gradient-to-b from-[#0a0d14] to-[#141824]">
-        {chats.map((msg, idx) => (
+        {chats?.map((msg, idx) => (
           <div
             key={idx}
-            className={`flex ${ msg.sender_id == userId ? "justify-end" : "justify-start"}`}
+            className={`flex ${
+              msg.sender_id == userId ? "justify-end" : "justify-start"
+            }`}
           >
             <div
               className={`max-w-xs px-4 py-2 rounded-lg ${

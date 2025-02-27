@@ -31,7 +31,7 @@ const Footer = () => {
         </nav>
 
         {/* Social Icons */}
-        <div className="flex gap-6">
+        <div className="flex gap-[50px]">
           <img
             src={insta}
             alt="Instagram"

@@ -17,6 +17,8 @@ const Public = () => {
   const [replytxt, setreplytxt] = useState("");
   const [dltflag, setdltflag] = useState();
   const [replyflag, setreplyflag] = useState({});
+  const [tweetimg, settweetimg] = useState();
+  const [imgupldflag, setimgupldflag] = useState(false);
   useEffect(() => {
     const gettweets = async () => {
       try {
@@ -29,7 +31,7 @@ const Public = () => {
       }
     };
     gettweets();
-  }, [review, replytxt,dltflag]);
+  }, [review, replytxt, dltflag, tweetimg]);
   const handledelete = async (tweetid, tweet) => {
     try {
       await axios
@@ -71,12 +73,9 @@ const Public = () => {
     }));
     setreplytxt("");
   };
-
-  const [imgupldflag, setimgupldflag] = useState(false);
   const upldimgflag = () => {
     setimgupldflag(!imgupldflag);
   };
-  const [tweetimg, settweetimg] = useState();
   const handleImgchange = (e) => {
     e.preventDefault();
     console.log(e.target.files);
@@ -111,6 +110,7 @@ const Public = () => {
             setreview("");
           } catch (error) {
             console.error("Error uploading image:", error.message);
+            toast.error("choose smaller image");
           }
         };
       } else {
@@ -149,7 +149,7 @@ const Public = () => {
                   <div className="w-10 h-10 rounded-full border-2 bg-gray-200"></div>
                   <span className="text-white font-medium">{item.user_id}</span>
                 </div>
-                <div className="w-full bg-white rounded-lg">
+                <div className="w-fit bg-white rounded-lg">
                   {item.image && (
                     <div className="w-fit h-fit">
                       <img src={item.image} alt="" />
