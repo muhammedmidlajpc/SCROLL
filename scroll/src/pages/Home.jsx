@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { coverPhotos } from "../data";
+import { coverPhotos } from "../../data";
 import Header from "../components/Header";
 import Body from "../components/Body";
 import Footer from "../components/Footer";

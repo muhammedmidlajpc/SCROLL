@@ -1,8 +1,8 @@
 import React from "react";
-import logo from "../src/assets/images/scroll.png";
-import insta from "../src/assets/images/insta.png";
-import fb from "../src/assets/images/fb.png";
-import gmail from "../src/assets/images/gmail.png";
+import logo from "../assets/images/scroll.png";
+import insta from "../assets/images/insta.png";
+import fb from "../assets/images/fb.png";
+import gmail from "../assets/images/gmail.png";
 import { useNavigate } from "react-router-dom";
 
 const Footer = () => {

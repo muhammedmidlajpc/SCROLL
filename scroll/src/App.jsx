@@ -1,19 +1,19 @@
 import React, { useState } from "react";
-import Header from "../components/Header";
-import Home from "../pages/Home";
+import Header from "./components/Header";
+import Home from "./pages/Home";
 import { Route, Routes } from "react-router-dom";
-import Body from "../components/Body";
-import List from "../pages/List";
-import SignIn from "../pages/Sign in";
-import SignUp from "../pages/Sign up";
-import Details from "../pages/Details";
-import Saved from "../pages/saved";
-import History from "../pages/History";
-import Public from "../pages/Public";
+import Body from "./components/Body";
+import List from "./pages/List";
+import SignIn from "./pages/Sign in";
+import SignUp from "./pages/Sign up";
+import Details from "./pages/Details";
+import Saved from "./pages/saved";
+import History from "./pages/History";
+import Public from "./pages/Public";
 import { ToastContainer } from "react-toastify";
-import Cover from "../components/Cover";
-import Chat from "../pages/Chat";
-import Chatbody from "../components/Chatbody";
+import Cover from "./components/Cover";
+import Chat from "./pages/Chat";
+import Chatbody from "./components/Chatbody";
 
 const App = () => {
   const user = sessionStorage.getItem("userid");

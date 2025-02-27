@@ -1,15 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
-import logo from "../src/assets/images/scroll.png";
-import searchimg from "../src/assets/images/search.png";
-import user from "../src/assets/images/vector.png";
-import globe from "../src/assets/images/public.png";
-import chat from "../src/assets/images/chat.svg";
-import threeline from "../src/assets/images/Vector-1.png";
+import logo from "../assets/images/scroll.png";
+import searchimg from "../assets/images/search.png";
+import user from "../assets/images/vector.png";
+import globe from "../assets/images/public.png";
+import chat from "../assets/images/chat.svg";
+import threeline from "../assets/images/Vector-1.png";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
 import "./Header.css";
-import { Search } from "lucide-react";
 const Header = ({ coverProps }) => {
   const userid = sessionStorage.getItem("userid");
   const navigate = useNavigate();

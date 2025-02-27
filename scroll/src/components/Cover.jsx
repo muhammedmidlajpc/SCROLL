@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { coverPhotos } from "../data";
+import { coverPhotos } from "../../data";
 import { toast } from "react-toastify";
 const Cover = () => {
   const [img, setimg] = useState();

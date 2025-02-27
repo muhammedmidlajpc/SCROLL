@@ -1,12 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addreview } from "../redux/reviewslice";
+// import { addreview } from "../redux/reviewslice";
 import { useParams } from "react-router-dom";
-import reply from "../src/assets/images/reply.svg";
-import send from "../src/assets/images/send.svg";
-import photo from "../src/assets/images/photo.svg";
-import trash from "../src/assets/images/trash.svg";
-
+import reply from "../assets/images/reply.svg";
+import send from "../assets/images/send.svg";
+import photo from "../assets/images/photo.svg";
+import trash from "../assets/images/trash.svg";
 import axios from "axios";
 import { toast } from "react-toastify";
 const Public = () => {
@@ -147,7 +146,7 @@ const Public = () => {
                 {/* User Info */}
                 <div className="flex items-center gap-2 mb-4 ">
                   <div className="w-10 h-10 rounded-full border-2 bg-gray-200"></div>
-                  <span className="text-white font-medium">{item.user_id}</span>
+                  <span className="text-white font-medium">{item.user_id.name}</span>
                 </div>
                 <div className="w-fit bg-white rounded-lg">
                   {item.image && (

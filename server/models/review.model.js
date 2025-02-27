@@ -4,6 +4,7 @@ const reviewschema = mongoose.Schema(
   {
     user_id: {
       type: mongoose.Schema.Types.ObjectId,
+      ref: "user",
       required: true
     },
     data_name: {
@@ -18,6 +19,7 @@ const reviewschema = mongoose.Schema(
       {
         user_id: {
           type: mongoose.Schema.Types.ObjectId,
+          ref: "user",
           required: true
         },
         content: {

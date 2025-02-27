@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import logo from "../src/assets/images/scroll.png";
+// import logo from "../assets/images/scroll.png";
 import axios from "axios";
 import { toast } from "react-toastify";
 const SignIn = () => {

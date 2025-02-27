@@ -14,7 +14,9 @@ module.exports.postreview = async (req, res) => {
 module.exports.getreview = async (req, res) => {
   try {
     const { name } = req.params;
-    const Reviews = await reviewmodel.find({ data_name: name });
+    const Reviews = await reviewmodel
+      .find({ data_name: name })
+      .populate("user_id")
     console.log(Reviews);
     res.status(200).json({ message: "Reviews", data: Reviews });
   } catch (err) {

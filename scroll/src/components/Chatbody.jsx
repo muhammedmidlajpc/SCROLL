@@ -36,7 +36,7 @@ const Chatbody = () => {
       };
       getmessages();
     },
-    [] // [message] when using socket.io there is no need to rerender the useeffect every time the message is changed
+    [message] // [message] when using socket.io there is no need to rerender the useeffect every time the message is changed
   );
   useEffect(() => {
     setsender_id(userId);

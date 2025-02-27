@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { anime, manhwa } from "../data";
+import { anime, manhwa } from "../../data";
 import { useLocation, useParams } from "react-router-dom";
-import save from "../src/assets/images/save.svg";
-import tick from "../src/assets/images/tick.svg";
-import reply from "../src/assets/images/reply.svg";
-import send from "../src/assets/images/send.svg";
-import { useDispatch, useSelector } from "react-redux";
-import { addreview } from "../redux/reviewslice";
+import save from "../assets/images/save.svg";
+import tick from "../assets/images/tick.svg";
+import reply from "../assets/images/reply.svg";
+import send from "../assets/images/send.svg";
+// import { useDispatch, useSelector } from "react-redux";
+// import { addreview } from "../redux/reviewslice";
 import { toast } from "react-toastify";
 import axios from "axios";
-import trash from "../src/assets/images/trash.svg";
+import trash from "../assets/images/trash.svg";
 
 const Details = () => {
   const user = sessionStorage.getItem("userid");
@@ -265,7 +265,7 @@ const Details = () => {
                       <div className="flex items-center gap-2 mb-4 ">
                         <div className="w-10 h-10 rounded-full border-2 bg-gray-200"></div>
                         <span className="text-white font-medium">
-                          {item.user_id}
+                          {item.user_id.name}
                         </span>
                       </div>
                       <div className="w-full bg-white rounded-lg">
