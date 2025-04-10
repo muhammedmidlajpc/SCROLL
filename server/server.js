@@ -13,6 +13,10 @@ const chat = require("./routes/chat.routes");
 const review = require("./routes/review.routes");
 const { app, server } = require("./config/socket");
 require("dotenv").config();
+
+// app.use(cors({ origin: "http://localhost:5173", credentials: true }));
+app.use(cors({ origin: "https://lovely-bavarois-281a44.netlify.app", credentials: true }));
+
 // const io = require("socket.io")(process.env.PORT, {
 //   cors: {
 //     origin: "http://localhost:5173",
@@ -23,8 +27,7 @@ require("dotenv").config();
 // const app = express();
 
 app.use("/images", express.static("./images"));
-// app.use(cors({ origin: "http://localhost:5173", credentials: true }));
-app.use(cors({ origin: "https://lovely-bavarois-281a44.netlify.app", credentials: true }));
+
 app.use(express.json());
 app.use(cookieParser());
 app.use(user);

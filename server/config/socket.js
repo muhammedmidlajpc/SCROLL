@@ -8,7 +8,7 @@ const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
     // origin: ["http://localhost:5173"]
-    origin: ["https://lovely-bavarois-281a44.netlify.app/"]
+    origin: ["https://lovely-bavarois-281a44.netlify.app"]
   }
 });
 io.on("connection", (socket) => {
