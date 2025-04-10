@@ -21,7 +21,7 @@ const Public = () => {
   useEffect(() => {
     const gettweets = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/tweet");
+        const res = await axios.get("https://scroll-tb0k.onrender.com/tweet");
         console.log(res);
         settweets(res.data.tweets);
         setdltflag(false);
@@ -34,7 +34,7 @@ const Public = () => {
   const handledelete = async (tweetid, tweet) => {
     try {
       await axios
-        .delete(`http://localhost:5000/tweet/${tweetid}`)
+        .delete(`https://scroll-tb0k.onrender.com/tweet/${tweetid}`)
         .then((res) => {
           console.log(res);
           setdltflag(res.data.status);
@@ -55,7 +55,7 @@ const Public = () => {
         content: replytxt
       };
       console.log(replytxt);
-      axios.post("http://localhost:5000/reply", replytext).then((res) => {
+      axios.post("https://scroll-tb0k.onrender.com/reply", replytext).then((res) => {
         console.log(res);
         toast.info(res.data.message);
 
@@ -100,7 +100,7 @@ const Public = () => {
 
           try {
             const res = await axios.post(
-              "http://localhost:5000/tweetimg",
+              "https://scroll-tb0k.onrender.com/tweetimg",
               payload
             );
             console.log(res.data.message);
@@ -118,7 +118,7 @@ const Public = () => {
           content: review
         };
         console.log(user, form);
-        axios.post("http://localhost:5000/tweet", form).then((res) => {
+        axios.post("https://scroll-tb0k.onrender.com/tweet", form).then((res) => {
           console.log(res.data.message);
           toast.info(res.data.message);
           setreview("");

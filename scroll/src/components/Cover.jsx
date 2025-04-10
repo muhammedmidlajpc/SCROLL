@@ -14,7 +14,7 @@ const Cover = () => {
       formData.append("title", "jikj");
       coverPhotos.push(formData);
       console.log(formData)
-      axios.post("http://localhost:5000/cover", formData).then((res) => {
+      axios.post("https://scroll-tb0k.onrender.com/cover", formData).then((res) => {
         console.log(res);
         toast.success(res);
       });
@@ -25,7 +25,7 @@ const Cover = () => {
   const handledelete = (name) => {
     console.log(name);
     axios
-      .delete(`http://localhost:5000/cover/${name}`)
+      .delete(`https://scroll-tb0k.onrender.com/cover/${name}`)
       .then((res) => {
         console.log(res);
       })
