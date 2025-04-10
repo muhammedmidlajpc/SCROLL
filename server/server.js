@@ -15,7 +15,7 @@ const { app, server } = require("./config/socket");
 require("dotenv").config();
 
 // app.use(cors({ origin: "http://localhost:5173", credentials: true }));
-app.use(cors({ origin: "https://lovely-bavarois-281a44.netlify.app", credentials: true }));
+app.use(cors({ origin: "https://scroll542.netlify.app", credentials: true }));
 
 // const io = require("socket.io")(process.env.PORT, {
 //   cors: {
