@@ -23,7 +23,7 @@ const Footer = () => {
         />
 
         {/* Navigation Links */}
-        <nav className="flex flex-wrap justify-center gap-6 text-lg font-semibold">
+        <nav className="flex flex-wrap justify-center gap-5 text-lg font-semibold">
           <h2 className="cursor-pointer hover:text-amber-400" onClick={() => navigate("/list/movies")}>MOVIE</h2>
           <h2 className="cursor-pointer hover:text-amber-400" onClick={() => navigate("/list/series")}>SERIES</h2>
           <h2 className="cursor-pointer hover:text-amber-400" onClick={() => navigate("/list/anime")}>ANIME</h2>
