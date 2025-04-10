@@ -22,7 +22,7 @@ const Chatbody = () => {
       console.log("first");
       const getmessages = async () => {
         await axios
-          .get(`https://scroll-tb0k.onrender.com/chat`, {
+          .get(`https://scroll-80y0.onrender.com/chat`, {
             params: {
               sender_id: userId,
               reciver_id: reciverId
@@ -75,7 +75,7 @@ const Chatbody = () => {
     // Emit the message via Socket.io
     socket.emit("sendMessage", msgdata);
     try {
-      await axios.post("https://scroll-tb0k.onrender.com/chat", msgdata).then((res) => {
+      await axios.post("https://scroll-80y0.onrender.com/chat", msgdata).then((res) => {
         console.log(res.data);
         toast.info(res.data.message);
         setMessage("");

@@ -16,7 +16,7 @@ const Chat = () => {
       if (userId) {
         try {
           const res = await axios.get(
-            `https://scroll-tb0k.onrender.com/getusers/${userId}`
+            `https://scroll-80y0.onrender.com/getusers/${userId}`
           );
         //   console.log(res.data);
           setusers(res.data.data);

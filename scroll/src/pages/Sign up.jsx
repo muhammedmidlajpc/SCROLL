@@ -31,7 +31,7 @@ const SignUp = () => {
     }
     axios
       // .post("http://localhost:5000/signup", formvalue, {
-      .post("https://scroll-tb0k.onrender.com/signup", formvalue, {
+      .post("https://scroll-80y0.onrender.com/signup", formvalue, {
         withCredentials: true
       })
       .then((res) => {
