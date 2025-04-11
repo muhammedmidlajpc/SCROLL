@@ -61,7 +61,7 @@ const Body = () => {
       await axios
         .get(
           // `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`
-          " http://www.omdbapi.com/?s=movie&y=2025&apikey=9fbf9983"
+          " https://www.omdbapi.com/?s=movie&y=2025&apikey=9fbf9983"
         )
         .then((res) => {
           // console.log(res.data.Search);
@@ -119,7 +119,7 @@ const Body = () => {
       await axios
         .get(
           // `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`
-          "http://www.omdbapi.com/?s=series&y=2024&type=series&apikey=9fbf9983"
+          "https://www.omdbapi.com/?s=series&y=2024&type=series&apikey=9fbf9983"
         )
         .then((res) => {
           // console.log(res.data.Search);
