@@ -22,7 +22,7 @@ const Public = () => {
   useEffect(() => {
     const fetchTweets = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/tweet");
+        const res = await axios.get("https://scroll-back-end.onrender.com/tweet");
         setTweets(res.data.tweets);
       } catch (err) {
         console.error("Error fetching tweets:", err.message);
@@ -33,7 +33,7 @@ const Public = () => {
 
   const handleDelete = async (tweetId) => {
     try {
-      const res = await axios.delete(`http://localhost:5000/tweet/${tweetId}`);
+      const res = await axios.delete(`https://scroll-back-end.onrender.com/tweet/${tweetId}`);
       toast.info(res.data.message);
       setDeleteTrigger(!deleteTrigger);
     } catch (error) {
@@ -49,7 +49,7 @@ const Public = () => {
         tweetid: tweetId,
         content: replyTxt
       };
-      const res = await axios.post("http://localhost:5000/reply", payload);
+      const res = await axios.post("https://scroll-back-end.onrender.com/reply", payload);
       toast.info(res.data.message);
       setReplyTxt("");
       setDeleteTrigger(!deleteTrigger); // Refresh list
@@ -98,7 +98,7 @@ const Public = () => {
       }
 
       const endpoint = tweetImg ? "/tweetimg" : "/tweet";
-      const res = await axios.post(`http://localhost:5000${endpoint}`, payload);
+      const res = await axios.post(`https://scroll-back-end.onrender.com${endpoint}`, payload);
       toast.info(res.data.message);
       setReview("");
       setTweetImg(null);
