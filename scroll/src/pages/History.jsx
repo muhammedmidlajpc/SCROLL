@@ -8,7 +8,7 @@ const History = () => {
   const [history, sethistory] = useState([]);
   useEffect(() => {
     const fetchhistory = async () => {
-      await axios.get(`http://localhost:5000/history/${user}`).then((res) => {
+      await axios.get(`https://scroll-back-end.onrender.com/history/${user}`).then((res) => {
         console.log(res.data);
         sethistory(res.data.data);
       });
