@@ -16,7 +16,7 @@ const Chat = () => {
       if (userId) {
         try {
           const res = await axios.get(
-            `https://scroll-80y0.onrender.com/getusers/${userId}`
+            `http://localhost:5000/getusers/${userId}`
           );
         //   console.log(res.data);
           setusers(res.data.data);
@@ -96,7 +96,7 @@ const Chat = () => {
                 return (
                   <div
                     key={idx}
-                    className="w-full h-[50px] relative flex bg-gray-500 items-center rounded-lg gap-2"
+                    className="w-full h-[50px] relative flex bg-gray-500 items-center rounded-lg gap-2 mb-2"
                     onClick={() => handleselectuser(user)}
                   >
                     <div className="rounded-full w-[40px] h-[40px] bg-amber-100 overflow-hidden">

@@ -40,7 +40,7 @@ module.exports.posttweet = async (req, res) => {
 };
 module.exports.gettweets = async (req, res) => {
   try {
-    const tweets = await tweetmodel.find().populate("user_id");
+    const tweets = await tweetmodel.find().populate("user_id","name").populate("reply.user_id","name");
     res.status(200).json({ tweets });
   } catch (err) {
     console.log(err.message);

@@ -27,7 +27,7 @@ const Details = () => {
   useEffect(() => {
     const getreview = async () => {
       axios
-        .get(`https://scroll-80y0.onrender.com/review/${name}`)
+        .get(`http://localhost:5000/review/${name}`)
         .then((res) => {
           console.log(res.data);
           setreviews(res.data.data);
@@ -40,11 +40,11 @@ const Details = () => {
   }, [review, user, replytxt, dltflag]);
   const handlesaved = () => {
     let saved = [];
-    console.log(saved);
+    // console.log(saved);
     if (user) {
       saved = [...saved, { user_id: user, file: detail }];
       axios
-        .post("https://scroll-80y0.onrender.com/saved", saved)
+        .post("http://localhost:5000/saved", saved)
         .then((res) => {
           console.log(res);
           toast.info(res.data.message);
@@ -62,7 +62,7 @@ const Details = () => {
       let history = [];
       history = [...history, { user_id: user, file: detail }];
       axios
-        .post("https://scroll-80y0.onrender.com/history", history)
+        .post("http://localhost:5000/history", history)
         .then((res) => {
           console.log(res);
           toast.info(res.data.message);
@@ -85,7 +85,7 @@ const Details = () => {
           content: review
         };
         await axios
-          .post("https://scroll-80y0.onrender.com/review", reviewdata)
+          .post("http://localhost:5000/review", reviewdata)
           .then((res) => {
             console.log(res);
             toast.info(res.data.message);
@@ -110,7 +110,7 @@ const Details = () => {
         rating: rating
       };
       axios
-        .post("https://scroll-80y0.onrender.com/rating", rate)
+        .post("http://localhost:5000/rating", rate)
         .then((res) => {
           // console.log(res);
           toast.info(res.data.message);
@@ -132,7 +132,7 @@ const Details = () => {
   useEffect(() => {
     const getrating = async () => {
       try {
-        const res = await axios.get(`https://scroll-80y0.onrender.com/rating/${name}`);
+        const res = await axios.get(`http://localhost:5000/rating/${name}`);
         console.log(res);
         const r = { ar: res.data.rating[0] };
         setavgrating(r.ar.avgrating);
@@ -155,7 +155,7 @@ const Details = () => {
           review_id: id
         };
         await axios
-          .post("https://scroll-80y0.onrender.com/review/reply", replydata)
+          .post("http://localhost:5000/review/reply", replydata)
           .then((res) => {
             console.log(res.data);
             toast.info(res.data.message);
@@ -174,7 +174,7 @@ const Details = () => {
     if (role === "admin") {
       setdltflag(true);
       try {
-        await axios.delete(`https://scroll-80y0.onrender.com/review/${id}`).then((res) => {
+        await axios.delete(`http://localhost:5000/review/${id}`).then((res) => {
           console.log(res);
           setdltflag(false);
           console.log(dltflag);
@@ -298,7 +298,7 @@ const Details = () => {
                                 className="relative w-full bg-white rounded-lg shadow-md p-2"
                               >
                                 <span className="text-gray-800 font-medium">
-                                  {r.user_id}
+                                  {r.user_id.name}
                                 </span>
                                 <p>{r.content}</p>
                               </div>

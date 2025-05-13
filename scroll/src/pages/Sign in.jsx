@@ -4,13 +4,19 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 const SignIn = () => {
+  console.log("SignIn component mounted")
   const [formvalue, setformvalue] = useState({
     email: "",
     password: ""
   });
+  console.log("formvalue");
   const [error, seterror] = useState({});
   const navigate = useNavigate();
-
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setformvalue({ ...formvalue, [name]: value });
+    
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     // Add your sign-in logic here
@@ -24,12 +30,10 @@ const SignIn = () => {
         seterror(errors);
         alert("email or password is invalid");
       }
-
-      // Redirect to home page after successful sign-in
       axios
-        // .post("http://localhost:5000/signin", formvalue, {
-        
-        .post("https://scroll-80y0.onrender.com/signin", formvalue, {
+        .post("http://localhost:5000/signin", formvalue, {
+
+        // .post("https://scroll-80y0.onrender.com/signin", formvalue, {
           withCredentials: true
         })
         .then((res) => {
@@ -52,23 +56,17 @@ const SignIn = () => {
     const errors = {};
     const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
     if (!value.email) {
-      errors.email = "this feild canot be empty";
+      errors.email = "This field cannot be empty";
     } else if (!emailRegex.test(value.email)) {
-      errors.email = "enter a valied email";
+      errors.email = "Enter a valid email";
     }
     if (!value.password) {
-      errors.password = "this feild canot be empty";
+      errors.password = "This field cannot be empty";
     } else if (value.password.length < 8) {
       errors.password = "password must contain 8 characters";
     }
     return errors;
   };
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setformvalue({ ...formvalue, [name]: value });
-  };
-
   return (
     <div className="min-h-screen bg-gray-900 flex flex-col">
       <main className="flex-grow flex items-center justify-center px-4">
