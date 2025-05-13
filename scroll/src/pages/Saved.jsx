@@ -7,7 +7,7 @@ const Saved = () => {
   const [saved, setsaved] = useState([]);
   useEffect(() => {
     const fetchsaved = async () => {
-      await axios.get(`http://localhost:5000/saved/${user}`).then((res) => {
+      await axios.get(`https://scroll-back-end.onrender.com/saved/${user}`).then((res) => {
         console.log(res.data);
         setsaved(res.data.data);
       });
