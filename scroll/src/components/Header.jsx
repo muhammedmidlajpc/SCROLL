@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import logo from "../assets/images/scroll.png";
 import searchimg from "../assets/images/search.png";
-import user from "../assets/images/vector.png";
+import user from "../assets/images/Vector.png";
 import globe from "../assets/images/public.png";
 import chat from "../assets/images/chat.svg";
 import threeline from "../assets/images/Vector-1.png";
