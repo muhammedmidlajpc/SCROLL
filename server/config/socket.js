@@ -7,7 +7,8 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: ["https://scroll-front-end.onrender.com"]
+    origin: ["https://scroll-front-end.onrender.com"],
+    credentials: true
     // origin: ["https://scroll542.netlify.app"] 
   }
 });
