@@ -7,7 +7,7 @@ import List from "./pages/List";
 import SignIn from "./pages/Sign in";
 import SignUp from "./pages/Sign up";
 import Details from "./pages/Details";
-import Saved from "./pages/saved";
+import Saved from "./pages/Saved";
 import History from "./pages/History";
 import Public from "./pages/Public";
 import { ToastContainer } from "react-toastify";
